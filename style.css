@@ -1,0 +1,85 @@
+*{
+    margin: 0;
+    padding:0;
+}
+button{
+    background-color: orange;
+    border:none;
+    outline: none;
+    width: 18%;
+    height: 50%;
+    border-radius: 15px;
+    margin-top: 5%;
+    font-size: medium;
+
+}
+#task{
+    background-color: transparent;
+}
+.btn{
+    border-radius: 25px;
+    margin:auto;
+    width: 35px;
+    font-size: 15px;
+    float: inline-end;
+}
+#list{
+    text-align: justify;
+}
+.container{
+    background: linear-gradient(145deg,white,orange);
+    background-size: cover;
+    height: 100vh;
+}
+body{
+    
+    text-align:center;
+}
+.inputdiv{
+    height:80%;
+    width:80%;
+    margin: 5%;
+    padding: 3%;
+    background-color: white;
+    border-radius: 25px;
+    align-items: center;
+    justify-content: space-evenly;
+    
+
+
+}
+input{
+    outline:none;
+    border:none;padding-top: 3%;
+    font-size: 25px;
+    width: 50%;
+    text-align: center;
+}
+.card{
+    height: 20vh;
+
+}
+.contant{
+margin-top: 5%;
+height: 60vh;
+padding-top: 5%;
+}
+#list{
+ padding-top: 3%;
+ align-items: center;
+ justify-content: center;
+ text-align: center;
+ margin-top: 3%;
+ font-size: medium;
+}
+button:hover{
+    transform: scale(1.3);
+}
+li{
+    background-color: white;
+    margin: 1%;
+    width: 80%;
+    border-radius: 10px;
+    padding: 5px;
+    
+}
