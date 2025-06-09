@@ -1,35 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todolist</title>
-    <link rel="stylesheet" href="style.css">
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List</title>
+  <style>
+    button {
+      background-color: orange;
+      border: none;
+      outline: none;
+    }
+    #task {
+      background-color: transparent;
+    }
+    .btn {
+      border-radius: 50%;
+      margin: 5px;
+    }
+    #list {
+      text-align: justify;
+    }
+    .container {
+      background: linear-gradient(145deg, white, orange);
+      background-size: cover;
+      height: 100vh;
+    }
+    body {
+      text-align: center;
+    }
+  </style>
 </head>
-<body >
-    <div class="container">
-        <div class="title">
+<body>
+  <div class="container">
     <h1>Create list & Complete Task [ Be Smart]</h1>
     <div class="card">
-    <div class="inputdiv">
-    <input type="text" id="task" placeholder="Enter your task here">
-    <button onclick="add()">Add</button>
-</div>
-    
+      <div class="inputdiv">
+        <input type="text" id="task" placeholder="Enter your task here">
+        <button id="addBtn">Add</button>
+      </div>
+      <div class="content">
+        <h3>Your tasks:</h3>
+        <ol id="list"></ol>
+      </div>
     </div>
-    <div class="content">
-    <ol id="list">
-        <h3>your tasks:</h3>
+  </div>
 
-    </ol>
-    </div>
-    <script src="script.js"></script>
-</div>
-</div>
-    
-    
-   
-    
+  <script>
+    const taskInput = document.getElementById("task");
+    const list = document.getElementById("list");
+    const addBtn = document.getElementById("addBtn");
+
+    let store = JSON.parse(localStorage.getItem("store")) || [];
+
+    function renderTasks() {
+      list.innerHTML = ""; // Clear existing
+      store.forEach((task, index) => {
+        const item = document.createElement("li");
+        item.innerHTML = `${task} <button class="btn" onclick="delet(${index})">x</button>`;
+        list.appendChild(item);
+      });
+    }
+
+    function add() {
+      const value = taskInput.value.trim();
+      if (value) {
+        store.push(value);
+        localStorage.setItem("store", JSON.stringify(store));
+        renderTasks();
+        taskInput.value = ""; // Clear input
+      }
+    }
+
+    function delet(index) {
+      store.splice(index, 1); // Remove from array
+      localStorage.setItem("store", JSON.stringify(store));
+      renderTasks();
+    }
+
+    // Event listeners
+    addBtn.addEventListener("click", add);
+    document.addEventListener("DOMContentLoaded", renderTasks);
+  </script>
 </body>
 </html>
